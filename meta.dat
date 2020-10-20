@@ -1,0 +1,4 @@
+PROJ_NAME=my-blog
+TEMPLATE=w3-template
+AUTHOR="Arvind Sajeev"
+POST_COUNT=0

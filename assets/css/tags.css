@@ -1,0 +1,87 @@
+.tag-list
+{
+	display:flex;	
+	-webkit-box-align:center;
+	align-items:center;
+	margin-top:1.5rem;
+	padding-bottom:1rem;
+	pointer-events:all;
+}
+
+.tag-element
+{
+	height: 2.0rem;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-left: 1rem;
+	width: unset;
+	position: relative;
+	padding: 0px 0.75rem;
+	background-color:rgba(36,240,0,0.1);
+	border-color:green;
+	border-style: solid;
+	border-radius: 0.8rem;
+	border-width: thin;
+	transition: all 0.7s;
+	cursor:pointer;
+}
+
+.next-post
+{
+	height: 2.0rem;
+	cursor: pointer;
+	width: unset;
+	float:right;
+	padding: 0px 0.75rem;
+	background-color:rgba(120,120,0,0.1);
+	border-color:green;
+	border-style: solid;
+	border-radius: 0.2rem;
+	border-width: thin;
+	transition: all 0.7s;
+	cursor:pointer;
+}
+
+.next-post:hover
+{
+	background-color:rgba(36,209,0,0.3);
+	border-color:white;
+	color:white;
+}
+
+.prev-post
+{
+	height: 2.0rem;
+	max-width : 7rem;
+	cursor: pointer;
+	width: unset;
+	padding: 0px 0.75rem;
+	background-color:rgba(120,120,0,0.1);
+	border-color:green;
+	border-style: solid;
+	border-radius: 0.2rem;
+	border-width: thin;
+	transition: all 0.7s;
+	cursor:pointer;
+}
+
+.prev-post:hover
+{
+	background-color:rgba(36,209,0,0.3);
+	border-color:white;
+	color:white;
+}
+
+.tag-element:hover
+{
+	background-color:rgba(36,209,0,0.3);
+	border-color:white;
+	color:white;
+	transform: translateY(-7px);
+}
+
+
