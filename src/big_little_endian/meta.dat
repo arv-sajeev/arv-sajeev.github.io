@@ -1,0 +1,4 @@
+POST_NAME=big_little_endian
+DATE=Oct-20-2020
+TAGS="intel microprocessor computer-architecture"
+DESC="A note on endianess"

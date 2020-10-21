@@ -1,0 +1,4 @@
+POST_NAME=DPDK_intro
+DATE=Oct-20-2020
+TAGS="dpdk telecom 5g"
+DESC="A short introduction to Intel's Data Plane Development Kit"
