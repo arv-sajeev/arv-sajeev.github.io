@@ -1,6 +1,7 @@
 .tag-list
 {
-	max-width : 1000px;
+	max-width : 100%;
+	height : auto;
 	display:flex;	
 	-webkit-box-align:center;
 	align-items:center;
