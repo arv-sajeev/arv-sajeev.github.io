@@ -65,6 +65,17 @@
 <p>In addition to the EAL, DPDK has a set of core libraries that</p>
 <h3 id="ring-manager">Ring manager</h3>
 <p>DPDK uses a ring structure that provides a lockless multi-producer, multi-consumer queue. It is optimized for bulk operations and being lockless is much faster and has lesser bottlenecks. They are intended for communication between different lcores.</p>
+<h3 id="memory-pool-manager">Memory pool manager</h3>
+<p>The applications allocates the memory during initialization and is then reserved as pools of objects in memory, a pool can be used to to store objects and uses the ring abstraction, it also has finer details like per core cache to ensure optimum use of memory.</p>
+<h3 id="network-packet-buffer-management">Network Packet Buffer management</h3>
+<p>The packets received and created can be stored in buffers, these have extra memory allocated to them, so mutation just required simple pointer arithmetic and not copying of the entire packet to new buffer, optimized for bulk large sized network packets with meta-data as well</p>
+<h3 id="timer-manager">Timer Manager</h3>
+<p>The timer service provided can be used to execute functions on timer expiry, it can be repetitive count downs or single shot actions, timers are initiated per lcore but use the primitives provided by the eal</p>
+<h3 id="poll-mode-driver">Poll mode driver</h3>
+<p>Poll mode drivers are used instead of interrupt based drivers as packets are very frequent and each arrival would set of an interrupt resulting in numerous interrupts and hence context switches this would turn out to be a bottle neck, instead poll mode drivers are used, avoiding context switches and constant streams of interrupts.</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>DPDK is a framework with quite a large number of tools and just one post can't do justice to it. For me personally it was one of the first such platform I ever used. The API and documentation are extremely well done and given some time and effort the seemingly cryptic example code start to make sense. One of the major obstacle I faced was setting it up on my PC, and errors that happened to the uio drivers each time my linux had an update, more on that some other day.</p>
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="tag-links">
 		<section class="tag-list">
