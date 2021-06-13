@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
-<title>Raving Sage's rants</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_io//favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_io//favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/w3.css">
-<link rel="stylesheet" href="assets/css/blog-posts.css">
-<link rel="stylesheet" href="assets/css/tags.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-J67JBZV21Q"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-J67JBZV21Q');
+	</script>
+	<title>Raving Sage's rants</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon_io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_io//favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_io//favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/w3.css">
+	<link rel="stylesheet" href="assets/css/blog-posts.css">
+	<link rel="stylesheet" href="assets/css/tags.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <style>
 
@@ -26,11 +36,11 @@
 
 .bgimg-1 {
   background-image: url('./assets/img/chunchi_waterfall.jpg');	
-  min-height: 100%;
+  min-height: 600px;
 }
 
 .bgimg-2 {
-  background-image: url("./assets/img/gokarnagirl.jpg");
+  background-image: url("./assets/img/gallery/6.jpg");
   min-height: 300px;
 }
 
@@ -41,7 +51,6 @@
 
 @media only screen and (max-device-width: 1600px) {
   .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
     min-height: 400px;
   }
 }
@@ -71,7 +80,7 @@
 </div>
 
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+<div class="bgimg-1 w3-display-container" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
 	<div class="w3-center w3-padding-large w3-wide section-holder" style="color:white;background-color:rgba(0,0,0,0.6)">
 		Hi, I'm Arvind	<!-- XXXSTATIM Change this to your name -->
@@ -93,16 +102,16 @@
   <p>
 	<!-- XXXSTATIM Fill in a description about yourself just about a paragraph would do-->
 I'm Arvind, I prefer to call myself "The Raving Sage" on the web but that hasn't actually caught on with other people just yet. The moniker is sort of a twisted anagram of my name and it's something that I put a lot of thought into.
-I completed my undergrad in CSE from College of Engineering Trivandrum, graduated in 2019. My interests are scattered all over the place but most of them lie close to the hardware, operating systems, computer networks and computer architecture just to name a few. I currently work as a Systems Engineer in TCS.
+  </p>
+  <p>
+I completed my undergrad in CSE from College of Engineering Trivandrum, graduated in 2019. My interests are scattered all over the place but most of them lie close to the hardware. I currently work as a Protocol Stack Developer at Altran.
 I tend to write code once in a while, most of it is updated on Github. I'm not what you'd call a "Gifted programmer", but I always try to challenge myself and get better. Over the years I've sort of fallen in love with the art that I devote lots of my free time learning stuff or writing code. I'm familiar with C, C++, python, bash, assembly, javascript and java in exactly that order.
-Like someone once said "Where words stop music begins", I've always been fascinated by music and it's power to elicit emotions and unite people.It's a deeply personal and collaborative experience at the same time. I tend to restrict my singing to the bathroom or in concerts where it is too loud for anyone to hear me but luckily I'm quite comfortable with instruments like the keyboard, guitar and most recently the murali and they allow me to express myself musically to a great extent. These skills that I acquired over many years I completely owe and dedicate to numerous loved ones, my parents, brother, instructors and many others.	
-
   </p>
 
 
   <div class="w3-row" style="margin-top:30px;margin-bottom:40px">
     <div class="w3-col m6 w3-center w3-padding-large">
-      <img src="assets/img/disismoi.png" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+      <img src="assets/img/disismoi.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
     </div>
 
     <!-- Hide this text on small devices -->
@@ -144,6 +153,10 @@ Like someone once said "Where words stop music begins", I've always been fascina
 	</h3>
 	<table>
 		<tr>
+			<th>Altran</th>
+			<td>Protocok Stack Developer (L2) 2021</td>
+		</tr>
+		<tr>
 			<th>TCS Digital</th>
 			<td>Systems Engineer 2019</td>
 		</tr>
@@ -163,7 +176,7 @@ Like someone once said "Where words stop music begins", I've always been fascina
 
 
 <!-- Second Parallax Image with blog text-->
-<div class="bgimg-2 w3-display-container w3-opacity-min" id="blog">
+<div class="bgimg-2 w3-display-container " id="blog">
   <div class="w3-display-middle" style="white-space:nowrap;">
 	<div class="w3-center w3-padding-large w3-wide section-holder" style="color:white;background-color:rgba(0,0,0,0.6)">
 	    <span class="w3-xxlarge w3-text-white w3-wide">Blog posts</span>
@@ -184,10 +197,12 @@ Like someone once said "Where words stop music begins", I've always been fascina
 		STATIMPOSTTAGLINKS
 	</section>
 	<div class="w3-center">
-		<a href="./archive.html" title="Posts archive" target="_blank" class="w3-hover-text-green"><h3>READ MORE IN ARCHIVE</h3></a>	
+		<a href="./archive.html" title="Posts archive" target="_blank" class="w3-hover-text-green">
+		    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
+		</a>	
 	<div class="w3-center">
 </div>
-<div class="bgimg-3 w3-display-container w3-opacity-min" id="gallery">
+<div class="bgimg-3 w3-display-container " id="gallery">
   <div class="w3-display-middle" style="white-space:nowrap;">
 	<div class="w3-center w3-padding-large w3-wide section-holder" style="color:white;background-color:rgba(0,0,0,0.6)">
 	    <span class="w3-xxlarge w3-text-white w3-wide">Gallery</span>
@@ -240,7 +255,6 @@ Like someone once said "Where words stop music begins", I've always been fascina
     <div class="w3-col m3">
       <img src="./assets/img/gallery/8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Pigoens Assemble">
     </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
   </div>
 </div>
 

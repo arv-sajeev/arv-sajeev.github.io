@@ -55,6 +55,11 @@
 	color:white;
 }
 
+.post-date
+{
+	float:right;
+}
+
 .prev-post
 {
 	height: 2.0rem;

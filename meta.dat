@@ -1,5 +1,5 @@
 PROJ_NAME=my-blog
 TEMPLATE=w3-template
 AUTHOR="Arvind Sajeev"
-POST_COUNT=3
+POST_COUNT=7
 GIT_REMOTE="https://github.com/arv-sajeev/arv-sajeev.github.io.git"

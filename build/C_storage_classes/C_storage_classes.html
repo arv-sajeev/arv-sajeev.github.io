@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-J67JBZV21Q"></script>
+	<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-J67JBZV21Q');
+	</script>
+	<title> C_storage_classes </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon_io//favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon_io//favicon-16x16.png">
+	<link rel="stylesheet" href="../../assets/css/w3.css">
+	<link rel="stylesheet" href="../../assets/css/pandoc-hl.css">
+	<link rel="stylesheet" href="../../assets/css/styles.css">
+	<link rel="stylesheet" href="../../assets/css/blog-posts.css">
+	<link rel="stylesheet" href="../../assets/css/tags.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+	<div class="w3-top">
+	  <div class="w3-bar w3-card w3-animate-top " id="myNavbar">
+	    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+	      <i class="fa fa-bars"></i>
+	    </a>
+	    <a href="../../index.html#home" class="w3-bar-item w3-button">HOME</a>
+	    <a href="../../index.html#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
+	    <a href="../../index.html#blog" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-pencil"></i> BLOG</a>
+	    <a href="../../index.html#gallery" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-camera"></i>Gallery</a>
+	    <a href="../../index.html#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red"><i class="fa fa-bars"></i></a>
+	  </div>
+
+	  <!-- Navbar on small screens -->
+	  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+	    <a href="../../index.html#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+	    <a href="../../index.html#blog" class="w3-bar-item w3-button" onclick="toggleFunction()">BLOG</a>
+	    <a href="../../index.html#gallery" class="w3-bar-item w3-button" onclick="toggleFunction()">GALLERY</a>
+	    <a href="../../index.html#" class="w3-bar-item w3-button">SEARCH</a>
+	  </div>
+	</div>
+
+	<div class="w3-content w3-container w3-padding-64" id="post-content">
+		<div class="post-date">
+			Jun-13-2021
+		</div>
+		<h1 id="c-storage-classes-use-them-right">C storage classes, use them right !!</h1>
+<p>It's been almost two months into my new job at Altran, the work here is substantially different to what I used to do before. While enjoyable it's got quite a steep learning curve, but one obstacle that I didn't expect was the language being used,<em>C</em>. C was the first (programming) language that I'd ever seriously learnt. Being a biology student in high school, I only got the chance to get started with programming around the second year of my college education for Data structures lab. I think C should be definitely be the first choice unlike languages like python or Java since it helps the student understand about how a computer works and grasp concepts like the <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">Von-Neumann</a> architecture of computers.</p>
+<p>I did quite well in DSA lab and was able to most of my work without copying it from my friends which I then saw as a huge achievement given that most of my classmates had taken Computer Science for high school. With the confidence from college and my experience doing a significantly large <a href="https://github.com/arv-sajeev/pfm">project</a> in C, I was disappointed in finding myself struggling to go through the code in my project and also bombing couple of interviews due to me lacking in certain fundamental concepts. Here is a post that I made as a reference for future me and maybe some of you who underestimated the power of C, hope it helps.</p>
+<hr />
+<h2 id="layout-of-a-program-in-memory">Layout of a program in memory</h2>
+<p>I hope that you are familiar with the fact that programs written in C, C++ and other similar languages are compiled or converted into a format readable by the CPU before running them. While compiling them different parts of the program get mapped to different sections or segments depending on the intended behaviour. Segmentation is a very important virtual memory management technique used to manage the memory of a program by mapping the different sections of a program to different address spaces, making it easier to manage their different behaviours and provide protection from the different sections from interfering with each other. Access to the different sections are typically done employing separate base address registers to access the address space. Now let's go ahead to the different types of segments</p>
+<h3 id="code-segment">Code segment</h3>
+<p>This segment is the part of the object file that will contain the actual &quot;code&quot; or instructions that you have written in your program with references to the memory and other variables as names. It is generally read only and protected so that no changes to the code are made during execution. With this part being read only it is even possible to store in ROM</p>
+<h3 id="data-segment">Data segment</h3>
+<p>This section contains any data that is global and is initialized with a value. A global data location as we shall see later on is one that can be accessed from within any point in the program and whose value generally last throughout the lifetime of the program. This values are non constant and can be modified later on</p>
+<ul>
+<li>data locations that are global and are initialized</li>
+<li>their values can be modified later on</li>
+<li>lasts throughout the life of the program</li>
+<li>during compilation, their values are first stored as part of the text segment but memory is allocated in data segment, it only during loading that the values of these data location are copied from code segment to data segments</li>
+</ul>
+<h3 id="block-starting-symbol-segment">Block Starting symbol segment</h3>
+<p>The BSS segment is very similar to the data segment and differs only in the fact that it holds global data that isn't explicitly initialized. It's owes it's weird name to the first specialised assembly instruction that allowed to declare a separate location for uninitialized data and hence saving space is the object file.</p>
+<ul>
+<li>data locations are global and are uninitialized</li>
+<li>most languages provide a default implicit initialization of all 0's</li>
+<li>lasts throughout the life of the program</li>
+<li>during compilation only the names to the locations are stored in text and the length of the total bss segment is provided, it is during loading that space is allocated using the length provided and initialized to 0's</li>
+</ul>
+<h3 id="stack-segment">Stack segment</h3>
+<p>This is probably the segment you've used the most. Any data that is local to a function is stored in the stack segment within a stack frame for maintaining the scope of that function. The LIFO behaviour of the stack makes it the appropriate segment to store local data that who's lifetime are bound to how long the function that they are in exists.</p>
+<ul>
+<li>the data locations are local and uninitialized, no implicit initialization so locations maybe filled with garbage values</li>
+<li>C and similar languages do not prevent you from accessing uninitialized data locations, may results in bugs due to garbage values</li>
+<li>The stack segment is maintained using separate pointers to point to the top of the stack and the base of the stack frame of the function call currently in scope</li>
+<li>In the x86 architecture, the stack grows downward towards lower addresses</li>
+<li>the heap and stack segments grow towards each other</li>
+</ul>
+<h3 id="heap-segment">Heap segment</h3>
+<p>This segment is used for dynamic allocation of memory, the program can use libc functions like malloc etc. to allocate custom chunks of memory. The OS uses efficient algorithms to assign memory minimizing fragmentation. Extra memory can be allocated to the heap segments using system calls</p>
+<ul>
+<li>the data locations come into scope when explicitly allocated and out of scope when explicitly deallocated or to the end of the program</li>
+<li>the heap grows from the end of the data segment towards the stack segment</li>
+</ul>
+<hr />
+	</div>
+	<div class="w3-content w3-container w3-padding-64" id="tag-links">
+		<section class="tag-list">
+		<div class="tag-element" onclick="location.href='../tags/C-language.html';">
+	<span>
+	C-language	
+	</span>
+</div><div class="tag-element" onclick="location.href='../tags/programming.html';">
+	<span>
+	programming	
+	</span>
+</div><div class="tag-element" onclick="location.href='../tags/unix.html';">
+	<span>
+	unix	
+	</span>
+</div>
+		</section>
+	</div>
+	<div class="w3-content w3-container w3-padding-64" id="next-post">
+			<section class="next-post" title="intro_to_Oauth" onclick="location.href='../../build/intro_to_Oauth/intro_to_Oauth.html';">
+	next : intro_to_Oauth
+</section>
+	</div>
+	<!-- Footer -->
+	<hr style="width:100%;;color:white">
+	<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+	  <a href="#post-content" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+	      <div class="w3-large w3-margin-bottom">
+		<i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Kerala, India<br>
+		<i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: arvind.sajeev@gmail.com<br>
+	      </div>
+	  <div class="w3-xlarge w3-section">
+			<!-- XXX Change these as well -->
+			<a href="https://github.com/arv-sajeev"><i class="fa fa-github-alt fa-1g"></i></a>
+			<a href="https://www.linkedin.com/in/arvind-sajeev/"><i class="fa fa-linkedin-square fa-1g"></i></a>
+			<a href="mailto: arvind.sajeev@gmail.com"><i class="fa fa-google fa-1g"></i></a>
+			<a href="https://www.flickr.com/people/160902405@N03/"><i class="fa fa-flickr fa-1g"></i></a>
+	  </div>
+	  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp"title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a> and 
+	<a href="https://github.com/arv-sajeev/statim" title="statim - lightweight static sites" target="_blank" class="w3-hover-text-green">statim</a>	
+	  </p>
+	</footer>
+<script src="../../assets/js/ui_scripts.js"></script>
+</body>
+<script src="../../assets/js/ui_scripts.js"></script>
+</html>
