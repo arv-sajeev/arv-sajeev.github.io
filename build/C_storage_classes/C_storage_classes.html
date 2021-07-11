@@ -100,6 +100,12 @@
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main()
 {
 }</code></pre></div>
+<p>This one does absolutely nothing, just defines the entry point for the program with main. This probably is the smallest standalone C program that you can compile with no errors, note that if you use some other named function it'll probably fail in the linking step. Compile the program using gcc.</p>
+<p>Now let's try and examine the segments, for this we shall use the linux tool size which gives the sections sizes of a specified object file. Note that here we only get to see the Text, Data and BSS segment sizes since stack and heap only come in to picture for a running program.</p>
+<div class="figure">
+<img src="./img/size_ss_1.png" alt="size of sections using size utility" />
+<p class="caption">size of sections using size utility</p>
+</div>
 <hr />
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="tag-links">
@@ -120,8 +126,8 @@
 		</section>
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="next-post">
-			<section class="next-post" title="intro_to_Oauth" onclick="location.href='../../build/intro_to_Oauth/intro_to_Oauth.html';">
-	next : intro_to_Oauth
+			<section class="next-post" title="big_little_endian" onclick="location.href='../../build/big_little_endian/big_little_endian.html';">
+	next : big_little_endian
 </section>
 	</div>
 	<!-- Footer -->
