@@ -52,11 +52,11 @@
 			Jun-13-2021
 		</div>
 		<h1 id="c-storage-classes-use-them-right">C storage classes, use them right !!</h1>
-<p>It's been almost two months into my new job at Altran, the work here is substantially different to what I used to do before. While enjoyable it's got quite a steep learning curve, but one obstacle that I didn't expect was the language being used,<em>C</em>. C was the first (programming) language that I'd ever seriously learnt. Being a biology student in high school, I only got the chance to get started with programming around the second year of my college education for Data structures lab. I think C should be definitely be the first choice unlike languages like python or Java since it helps the student understand about how a computer works and grasp concepts like the <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">Von-Neumann</a> architecture of computers.</p>
-<p>I did quite well in DSA lab and was able to most of my work without copying it from my friends which I then saw as a huge achievement given that most of my classmates had taken Computer Science for high school. With the confidence from college and my experience doing a significantly large <a href="https://github.com/arv-sajeev/pfm">project</a> in C, I was disappointed in finding myself struggling to go through the code in my project and also bombing couple of interviews due to me lacking in certain fundamental concepts. Here is a post that I made as a reference for future me and maybe some of you who underestimated the power of C, hope it helps.</p>
+<p>It's been almost two months into my new job at Altran, the work here is substantially different from what I used to do before. While enjoyable it's got quite a steep learning curve, but one obstacle that I didn't expect was the language being used, <strong>C</strong>. C was the first (programming) language that I'd ever seriously learnt. Being a biology student in high school, I only got the chance to get started with programming around the second year of my college education for Data structures lab. I think C should be definitely be the first choice unlike languages like python or Java since it helps the student understand about how a computer works and grasp concepts like the <a href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">Von-Neumann</a> architecture of computers.</p>
+<p>I did moderately well in DSA lab and was able to most of my work without much copying from classmates. With the confidence from college and my experience doing a significantly large <a href="https://github.com/arv-sajeev/pfm">project</a> in C, I was disappointed in finding myself struggling to go through the code in my project and also bombing couple of interviews due to me lacking in certain fundamental concepts. Here is a post that I made as a reference for future me and maybe some of you who underestimated the power of C, hope it helps.</p>
 <hr />
 <h2 id="layout-of-a-program-in-memory">Layout of a program in memory</h2>
-<p>I hope that you are familiar with the fact that programs written in C, C++ and other similar languages are compiled or converted into a format readable by the CPU before running them. While compiling them different parts of the program get mapped to different sections or segments depending on the intended behaviour. Segmentation is a very important virtual memory management technique used to manage the memory of a program by mapping the different sections of a program to different address spaces, making it easier to manage their different behaviours and provide protection from the different sections from interfering with each other. Access to the different sections are typically done employing separate base address registers to access the address space. Now let's go ahead to the different types of segments</p>
+<p>I hope that you are familiar with the fact that programs written in C, C++ and other similar languages are compiled or converted into a format readable by the CPU (machine level language) before running them. While compiling them different parts of the program get mapped to different sections or segments depending on the intended behaviour. Segmentation is a very important virtual memory management technique used to manage the memory of a program by mapping the different sections of a program to different address spaces, making it easier to manage their different behaviours and provide protection from the different sections from interfering with each other. Access to the different sections are typically done employing separate base address registers to access the address space. Now let's go ahead to the different types of segments. C being one of the languages most true to how a computer might understand a program, it is very easy to make a one-to-one mapping between the variables and the segments they are stored in.</p>
 <h3 id="code-segment">Code segment</h3>
 <p>This segment is the part of the object file that will contain the actual &quot;code&quot; or instructions that you have written in your program with references to the memory and other variables as names. It is generally read only and protected so that no changes to the code are made during execution. With this part being read only it is even possible to store in ROM</p>
 <h3 id="data-segment">Data segment</h3>
@@ -89,7 +89,17 @@
 <ul>
 <li>the data locations come into scope when explicitly allocated and out of scope when explicitly deallocated or to the end of the program</li>
 <li>the heap grows from the end of the data segment towards the stack segment</li>
+<li>the locations provided usually have no default initialization, maybe filled with garbage values</li>
 </ul>
+<div class="figure">
+<img src="./img/Memory_segments.png" alt="Memory segments of a program" />
+<p class="caption">Memory segments of a program</p>
+</div>
+<h3 id="show-me-what-you-got">Show me what you got !!</h3>
+<p>Now that you got a basic idea about segmentation let's try seeing it for ourselves, open up your favourite text editor and write a program similar to the one below.</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main()
+{
+}</code></pre></div>
 <hr />
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="tag-links">
