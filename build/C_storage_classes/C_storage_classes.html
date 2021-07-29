@@ -95,17 +95,41 @@
 <img src="./img/Memory_segments.png" alt="Memory segments of a program" />
 <p class="caption">Memory segments of a program</p>
 </div>
+<hr />
 <h3 id="show-me-what-you-got">Show me what you got !!</h3>
 <p>Now that you got a basic idea about segmentation let's try seeing it for ourselves, open up your favourite text editor and write a program similar to the one below.</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main()
 {
 }</code></pre></div>
-<p>This one does absolutely nothing, just defines the entry point for the program with main. This probably is the smallest standalone C program that you can compile with no errors, note that if you use some other named function it'll probably fail in the linking step. Compile the program using gcc.</p>
-<p>Now let's try and examine the segments, for this we shall use the linux tool size which gives the sections sizes of a specified object file. Note that here we only get to see the Text, Data and BSS segment sizes since stack and heap only come in to picture for a running program.</p>
+<p>This one does absolutely nothing, just defines the entry point for the program with main. This probably is the smallest standalone C program that you can compile with no errors, note that if you use some other named function it'll probably fail in the linking step. Compile the program using <code>gcc &lt;srcfile-name&gt;</code> to get and object file.</p>
+<p>Now let's try and examine the segments, for this we shall use the linux tool <code>size</code> which gives the sections sizes of a specified object file. Note that here we only get to see the Text, Data and BSS segment sizes since Stack and Heap only come in to picture for a running program.</p>
 <div class="figure">
 <img src="./img/size_ss_1.png" alt="size of sections using size utility" />
 <p class="caption">size of sections using size utility</p>
 </div>
+<p>But wait a minute, something is seriously wrong here, our program has next to nothing in it, and yet the tool is showing quite a large size of 1967, more than a KB!!! Furthermore our empty program is said to have 544 bytes of Data segment, by our definitions above this means our program has about half a KB of initialized memory. Surely there's something wrong, but here's a thumb rule, computers seldom mistakes but they have no mind of their own, all they can do is follow instructions provided to them. This is exactly what happened here, my obedient terminal seeing that I compiled the program using gcc ran using it's default mode. In it's default mode gcc does the following 4 steps</p>
+<ul>
+<li>Preprocessing (Processes MACRO definitions and Preprocessor directives)</li>
+<li>Compiling (Conversion of our HLL C code to platform specific assembly language)</li>
+<li>Assembly (Conversion of the assembly language to our machines object code)</li>
+<li>Linking (Links the different files, libraries provided during compilation)</li>
+</ul>
+<p>So what happened here was that after assembly during linking, extra code with DS, TS and BSS got added. But here's another twist, I didn't ask gcc to link any files, neither do I have any headers in it, so what exactly got linked here? Turns out gcc in it's default mode always links with stdlib.so and stdio.so dynamic libraries whether or not you have the headers for them in your file. Phew!! So there you go that's what accounts for the extra size. To work around this we use a neat trick asking gcc to retain the temporary files created during each step of the build process. This way we get the object file before it gets linked with the standard c libraries. The option you'll have to give is -save-temps <code>gcc -save-temps &lt;source-file&gt; -o &lt;dest-file&gt;</code>. You'll see a couple of other files they are all temp files from different stages in the build pipeline, *.i files are after preprocessing, *.s files compiling and *.o after assembly. The *.o file will give as the most accurate results and we will be looking into that like before.</p>
+<div class="figure">
+<img src="./img/size_ss_2.png" alt="size of sections using size utility" />
+<p class="caption">size of sections using size utility</p>
+</div>
+<p>This seems fine now, our program has no data uninitialized or initialized, this is reflected in the 0 BS and DS size. Let's now try adding a variable of type char in our program.</p>
+<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="dt">int</span> main()
+{
+    <span class="dt">char</span> a;
+}</code></pre></div>
+<p>Compile the program with the same <code>-save-temps</code> option, let's see how the segment size changes.</p>
+<div class="figure">
+<img src="./img/size_ss_3.png" alt="size of sections using size utility" />
+<p class="caption">size of sections using size utility</p>
+</div>
+<p>What? No change, you guessed it the variable a was added as part of the function main, the scope of the variable is local to the function main and will come into the picture only when the program is running within the Stack segment.</p>
 <hr />
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="tag-links">
