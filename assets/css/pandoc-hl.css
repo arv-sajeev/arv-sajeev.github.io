@@ -5,7 +5,7 @@ table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
 table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; color : #000000; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
+pre, code { background-color: #f8f8f8; color: #ffffff; }
 code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code > span.dt { color: #204a87; } /* DataType */
 code > span.dv { color: #0000cf; } /* DecVal */
