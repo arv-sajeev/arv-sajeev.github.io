@@ -52,14 +52,14 @@
 			Oct-20-2020
 		</div>
 		<h1 id="data-plane-development-kit">Data Plane Development Kit</h1>
-<p>The DPDK is an open source framework that is used for ultra fast processing of packet data. It comprises of a large number of abstractions and libraries that can be used to program environments ranging from specialized packet processing hardware to commodity systems. It's claim to fame are the highly optimized drivers support along with the option for userspace packet processing. DPDK has extensive support for a wide variety of architectures almost everyone that is out there. The enviroment is set up while building the tool in the device.</p>
+<p>The DPDK is an open source framework that is used for ultra fast processing of packet data. It comprises of a large number of abstractions and libraries that can be used to program environments ranging from specialized packet processing hardware to commodity systems. It’s claim to fame are the highly optimized drivers support along with the option for userspace packet processing. DPDK has extensive support for a wide variety of architectures almost everyone that is out there. The enviroment is set up while building the tool in the device.</p>
 <hr />
 <h2 id="environment-abstraction-layer">Environment Abstraction Layer</h2>
 <p>The EAL like the name suggests abstracts the hardware and software layers below to give a unified interface to write DPDK programs on, a part of the EAL is set up when making the software to suit the particular architecture that the application is to run on. Other application specific details can be provided via command line during the initializing step. The application can be considered to be a monolithic one with all the DPDK libraries included along with the EAL and other application specific code. <strong>Userspace drivers are setup while making and these rely on magic numbers of the kernel to ensure compatibility, updates to your linux system can result in a mismatch in the numbers resulting in errors like, invalid module format for you .ko files</strong>.</p>
 <p>The EAL in addition to hiding the architecture details provides the following services to DPDK applications</p>
 <ul>
 <li>Loading and initializing a DPDK application</li>
-<li>Seamlessly handling multiprocessor, multi-core by abstracting them as lcore's as assigning core affinity</li>
+<li>Seamlessly handling multiprocessor, multi-core by abstracting them as lcore’s as assigning core affinity</li>
 <li>allocating memory during initialization</li>
 <li>atomic and lock primitives</li>
 <li>access to the PCI bus</li>
@@ -80,7 +80,7 @@
 <p>Poll mode drivers are used instead of interrupt based drivers as packets are very frequent and each arrival would set of an interrupt resulting in numerous interrupts and hence context switches this would turn out to be a bottle neck, instead poll mode drivers are used, avoiding context switches and constant streams of interrupts.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>DPDK is a framework with quite a large number of tools and just one post can't do justice to it. For me personally it was one of the first such platform I ever used. The API and documentation are extremely well done and given some time and effort the seemingly cryptic example code start to make sense. One of the major obstacle I faced was setting it up on my PC, and errors that happened to the uio drivers each time my linux had an update, more on that some other day.</p>
+<p>DPDK is a framework with quite a large number of tools and just one post can’t do justice to it. For me personally it was one of the first such platform I ever used. The API and documentation are extremely well done and given some time and effort the seemingly cryptic example code start to make sense. One of the major obstacle I faced was setting it up on my PC, and errors that happened to the uio drivers each time my linux had an update, more on that some other day.</p>
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="tag-links">
 		<section class="tag-list">
@@ -100,8 +100,8 @@
 		</section>
 	</div>
 	<div class="w3-content w3-container w3-padding-64" id="next-post">
-			<section class="next-post" title="about_the_blog" onclick="location.href='../../build/about_the_blog/about_the_blog.html';">
-	next : about_the_blog
+			<section class="next-post" title="intro_to_Oauth" onclick="location.href='../../build/intro_to_Oauth/intro_to_Oauth.html';">
+	next : intro_to_Oauth
 </section>
 	</div>
 	<!-- Footer -->
